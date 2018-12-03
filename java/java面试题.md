@@ -18,3 +18,55 @@
 
    **1.自反性 2.对称性 3.传递性 4.一致性**
 
+## StringBuilder和+
+
++最终还是被转换成StringBuilder进行字符串连接,循环中使用+每次循环都会创建一个StringBuilder，会占用大量资源，降低了效率；+不要与StringBuilder混合使用会创建大量StringBuilder;  StringBuilder和StringBuffer功能基本一样,StringBuilder不是线程安全的,效率更高
+
+## ==和 equals,常量池，=，new String()
+
+==比较引用类型的地址；equals比较字符串内容，=赋值的字符串在常量池中,两个同样的字符串指向同一个地址；new创建同样内容的字符串地址也会不一样
+
+## 时间对象
+
+```java
+Calendar cal=Calendar.getInstance();//获得Calendar实例
+cal.getTimeInMillis()；//获得毫秒数
+System.currentTimeMillis();
+LocalDateTime dt=LocalDateTime.now();
+```
+
+
+
+## int和Integer
+
+```java
+Integer a = new Integer(3);
+Integer b= 3; //3自动装箱成Integer
+int c=3;
+a==b; //false不是引用同一对象
+a==c; //true a自动拆箱成int类型再和c比较
+
+
+Integer  f1=100,f2=100,f3=150,f4=150;
+f1==f2;  //true  如果整型字面量的值在-128-127之间不会new新的Integer对象，而是直接引用常量池中的Integer对象
+f3==f4;  //false
+
+```
+
+
+
+## IO的几种类型的流
+
+按照流的方向:输入流和输出流     	 
+
+按照实现功能分:节点流(可以从一个特定地方读写数据,如FileReader);  处理流(对已存在的流的连接和封装,如BufferReader		          需要其它流对象作参数)
+
+按照处理数据的单位:字节流(继承于InputStream和OutputStream)和字符流(继承于InputStreamReader和OutputStreamWriter)
+
+![字符流和字节流](F:\gitLibrary\DocNote\java\字符流和字节流.png)
+
+## 字节流转为字符流
+
+字节输入流转字符通过InputStreamReader实现，构造函数传入InputStream对象
+
+字节输出流转字符通过OutputStreamWriter实现，构造函数传入OutputStream对象
